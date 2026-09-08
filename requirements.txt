@@ -1,0 +1,18 @@
+# --- Required to run the live API (api/main.py) and the real numeric pipeline ---
+torch
+pandas
+numpy
+scikit-learn
+fastapi
+uvicorn
+Pillow          # used by scripts/generate_visuals.py to render the schematic PNGs
+
+# (The live satellite/storm feature in live/ uses only Python's built-in urllib —
+#  no extra install needed for that.)
+
+# --- Only needed if you build out future_image_module/ with real TCIR imagery ---
+# timm>=0.9.0            # EfficientNet-B0 backbone for CycloneCNN
+# h5py>=3.9.0            # reading TCIR's HDF5 files
+# pytorch-grad-cam>=1.4.0
+# scipy>=1.10.0
+# matplotlib>=3.7.0

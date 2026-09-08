@@ -1,0 +1,526 @@
+{
+  "storm_id": "AL041992",
+  "name": "ANDREW",
+  "frames": [
+    {
+      "timestamp": "1992-08-16T18:00:00",
+      "lat": 10.8,
+      "lon": -35.5,
+      "wind_kt": 25.0,
+      "pressure_mb": 1010.0,
+      "category": "TD",
+      "category_code": 0,
+      "image_url": "/api/storms/AL041992/frame/0/image"
+    },
+    {
+      "timestamp": "1992-08-17T00:00:00",
+      "lat": 11.2,
+      "lon": -37.4,
+      "wind_kt": 30.0,
+      "pressure_mb": 1009.0,
+      "category": "TD",
+      "category_code": 0,
+      "image_url": "/api/storms/AL041992/frame/1/image"
+    },
+    {
+      "timestamp": "1992-08-17T06:00:00",
+      "lat": 11.7,
+      "lon": -39.6,
+      "wind_kt": 30.0,
+      "pressure_mb": 1008.0,
+      "category": "TD",
+      "category_code": 0,
+      "image_url": "/api/storms/AL041992/frame/2/image"
+    },
+    {
+      "timestamp": "1992-08-17T12:00:00",
+      "lat": 12.3,
+      "lon": -42.0,
+      "wind_kt": 35.0,
+      "pressure_mb": 1006.0,
+      "category": "TS",
+      "category_code": 1,
+      "image_url": "/api/storms/AL041992/frame/3/image"
+    },
+    {
+      "timestamp": "1992-08-17T18:00:00",
+      "lat": 13.1,
+      "lon": -44.2,
+      "wind_kt": 35.0,
+      "pressure_mb": 1003.0,
+      "category": "TS",
+      "category_code": 1,
+      "image_url": "/api/storms/AL041992/frame/4/image"
+    },
+    {
+      "timestamp": "1992-08-18T00:00:00",
+      "lat": 13.6,
+      "lon": -46.2,
+      "wind_kt": 40.0,
+      "pressure_mb": 1002.0,
+      "category": "TS",
+      "category_code": 1,
+      "image_url": "/api/storms/AL041992/frame/5/image"
+    },
+    {
+      "timestamp": "1992-08-18T06:00:00",
+      "lat": 14.1,
+      "lon": -48.0,
+      "wind_kt": 45.0,
+      "pressure_mb": 1001.0,
+      "category": "TS",
+      "category_code": 1,
+      "image_url": "/api/storms/AL041992/frame/6/image"
+    },
+    {
+      "timestamp": "1992-08-18T12:00:00",
+      "lat": 14.6,
+      "lon": -49.9,
+      "wind_kt": 45.0,
+      "pressure_mb": 1000.0,
+      "category": "TS",
+      "category_code": 1,
+      "image_url": "/api/storms/AL041992/frame/7/image"
+    },
+    {
+      "timestamp": "1992-08-18T18:00:00",
+      "lat": 15.4,
+      "lon": -51.8,
+      "wind_kt": 45.0,
+      "pressure_mb": 1000.0,
+      "category": "TS",
+      "category_code": 1,
+      "image_url": "/api/storms/AL041992/frame/8/image"
+    },
+    {
+      "timestamp": "1992-08-19T00:00:00",
+      "lat": 16.3,
+      "lon": -53.5,
+      "wind_kt": 45.0,
+      "pressure_mb": 1001.0,
+      "category": "TS",
+      "category_code": 1,
+      "image_url": "/api/storms/AL041992/frame/9/image"
+    },
+    {
+      "timestamp": "1992-08-19T06:00:00",
+      "lat": 17.2,
+      "lon": -55.3,
+      "wind_kt": 45.0,
+      "pressure_mb": 1002.0,
+      "category": "TS",
+      "category_code": 1,
+      "image_url": "/api/storms/AL041992/frame/10/image"
+    },
+    {
+      "timestamp": "1992-08-19T12:00:00",
+      "lat": 18.0,
+      "lon": -56.9,
+      "wind_kt": 45.0,
+      "pressure_mb": 1005.0,
+      "category": "TS",
+      "category_code": 1,
+      "image_url": "/api/storms/AL041992/frame/11/image"
+    },
+    {
+      "timestamp": "1992-08-19T18:00:00",
+      "lat": 18.8,
+      "lon": -58.3,
+      "wind_kt": 45.0,
+      "pressure_mb": 1007.0,
+      "category": "TS",
+      "category_code": 1,
+      "image_url": "/api/storms/AL041992/frame/12/image"
+    },
+    {
+      "timestamp": "1992-08-20T00:00:00",
+      "lat": 19.8,
+      "lon": -59.3,
+      "wind_kt": 40.0,
+      "pressure_mb": 1011.0,
+      "category": "TS",
+      "category_code": 1,
+      "image_url": "/api/storms/AL041992/frame/13/image"
+    },
+    {
+      "timestamp": "1992-08-20T06:00:00",
+      "lat": 20.7,
+      "lon": -60.0,
+      "wind_kt": 40.0,
+      "pressure_mb": 1013.0,
+      "category": "TS",
+      "category_code": 1,
+      "image_url": "/api/storms/AL041992/frame/14/image"
+    },
+    {
+      "timestamp": "1992-08-20T12:00:00",
+      "lat": 21.7,
+      "lon": -60.7,
+      "wind_kt": 40.0,
+      "pressure_mb": 1015.0,
+      "category": "TS",
+      "category_code": 1,
+      "image_url": "/api/storms/AL041992/frame/15/image"
+    },
+    {
+      "timestamp": "1992-08-20T18:00:00",
+      "lat": 22.5,
+      "lon": -61.5,
+      "wind_kt": 40.0,
+      "pressure_mb": 1014.0,
+      "category": "TS",
+      "category_code": 1,
+      "image_url": "/api/storms/AL041992/frame/16/image"
+    },
+    {
+      "timestamp": "1992-08-21T00:00:00",
+      "lat": 23.2,
+      "lon": -62.4,
+      "wind_kt": 45.0,
+      "pressure_mb": 1014.0,
+      "category": "TS",
+      "category_code": 1,
+      "image_url": "/api/storms/AL041992/frame/17/image"
+    },
+    {
+      "timestamp": "1992-08-21T06:00:00",
+      "lat": 23.9,
+      "lon": -63.3,
+      "wind_kt": 45.0,
+      "pressure_mb": 1010.0,
+      "category": "TS",
+      "category_code": 1,
+      "image_url": "/api/storms/AL041992/frame/18/image"
+    },
+    {
+      "timestamp": "1992-08-21T12:00:00",
+      "lat": 24.4,
+      "lon": -64.2,
+      "wind_kt": 50.0,
+      "pressure_mb": 1007.0,
+      "category": "TS",
+      "category_code": 1,
+      "image_url": "/api/storms/AL041992/frame/19/image"
+    },
+    {
+      "timestamp": "1992-08-21T18:00:00",
+      "lat": 24.8,
+      "lon": -64.9,
+      "wind_kt": 50.0,
+      "pressure_mb": 1004.0,
+      "category": "TS",
+      "category_code": 1,
+      "image_url": "/api/storms/AL041992/frame/20/image"
+    },
+    {
+      "timestamp": "1992-08-22T00:00:00",
+      "lat": 25.3,
+      "lon": -65.9,
+      "wind_kt": 55.0,
+      "pressure_mb": 1000.0,
+      "category": "TS",
+      "category_code": 1,
+      "image_url": "/api/storms/AL041992/frame/21/image"
+    },
+    {
+      "timestamp": "1992-08-22T06:00:00",
+      "lat": 25.6,
+      "lon": -67.0,
+      "wind_kt": 65.0,
+      "pressure_mb": 994.0,
+      "category": "Cat1",
+      "category_code": 2,
+      "image_url": "/api/storms/AL041992/frame/22/image"
+    },
+    {
+      "timestamp": "1992-08-22T12:00:00",
+      "lat": 25.8,
+      "lon": -68.3,
+      "wind_kt": 80.0,
+      "pressure_mb": 981.0,
+      "category": "Cat1",
+      "category_code": 2,
+      "image_url": "/api/storms/AL041992/frame/23/image"
+    },
+    {
+      "timestamp": "1992-08-22T18:00:00",
+      "lat": 25.7,
+      "lon": -69.7,
+      "wind_kt": 95.0,
+      "pressure_mb": 969.0,
+      "category": "Cat2",
+      "category_code": 3,
+      "image_url": "/api/storms/AL041992/frame/24/image"
+    },
+    {
+      "timestamp": "1992-08-23T00:00:00",
+      "lat": 25.6,
+      "lon": -71.1,
+      "wind_kt": 110.0,
+      "pressure_mb": 961.0,
+      "category": "Cat3",
+      "category_code": 4,
+      "image_url": "/api/storms/AL041992/frame/25/image"
+    },
+    {
+      "timestamp": "1992-08-23T06:00:00",
+      "lat": 25.5,
+      "lon": -72.5,
+      "wind_kt": 130.0,
+      "pressure_mb": 947.0,
+      "category": "Cat4",
+      "category_code": 5,
+      "image_url": "/api/storms/AL041992/frame/26/image"
+    },
+    {
+      "timestamp": "1992-08-23T12:00:00",
+      "lat": 25.4,
+      "lon": -74.2,
+      "wind_kt": 145.0,
+      "pressure_mb": 933.0,
+      "category": "Cat5",
+      "category_code": 6,
+      "image_url": "/api/storms/AL041992/frame/27/image"
+    },
+    {
+      "timestamp": "1992-08-23T18:00:00",
+      "lat": 25.4,
+      "lon": -75.8,
+      "wind_kt": 150.0,
+      "pressure_mb": 922.0,
+      "category": "Cat5",
+      "category_code": 6,
+      "image_url": "/api/storms/AL041992/frame/28/image"
+    },
+    {
+      "timestamp": "1992-08-23T21:00:00",
+      "lat": 25.4,
+      "lon": -76.6,
+      "wind_kt": 140.0,
+      "pressure_mb": 923.0,
+      "category": "Cat5",
+      "category_code": 6,
+      "image_url": "/api/storms/AL041992/frame/29/image"
+    },
+    {
+      "timestamp": "1992-08-24T00:00:00",
+      "lat": 25.4,
+      "lon": -77.5,
+      "wind_kt": 125.0,
+      "pressure_mb": 930.0,
+      "category": "Cat4",
+      "category_code": 5,
+      "image_url": "/api/storms/AL041992/frame/30/image"
+    },
+    {
+      "timestamp": "1992-08-24T01:00:00",
+      "lat": 25.4,
+      "lon": -77.8,
+      "wind_kt": 130.0,
+      "pressure_mb": 931.0,
+      "category": "Cat4",
+      "category_code": 5,
+      "image_url": "/api/storms/AL041992/frame/31/image"
+    },
+    {
+      "timestamp": "1992-08-24T06:00:00",
+      "lat": 25.4,
+      "lon": -79.3,
+      "wind_kt": 130.0,
+      "pressure_mb": 937.0,
+      "category": "Cat4",
+      "category_code": 5,
+      "image_url": "/api/storms/AL041992/frame/32/image"
+    },
+    {
+      "timestamp": "1992-08-24T08:40:00",
+      "lat": 25.5,
+      "lon": -80.2,
+      "wind_kt": 145.0,
+      "pressure_mb": 926.0,
+      "category": "Cat5",
+      "category_code": 6,
+      "image_url": "/api/storms/AL041992/frame/33/image"
+    },
+    {
+      "timestamp": "1992-08-24T09:05:00",
+      "lat": 25.5,
+      "lon": -80.3,
+      "wind_kt": 145.0,
+      "pressure_mb": 922.0,
+      "category": "Cat5",
+      "category_code": 6,
+      "image_url": "/api/storms/AL041992/frame/34/image"
+    },
+    {
+      "timestamp": "1992-08-24T12:00:00",
+      "lat": 25.6,
+      "lon": -81.2,
+      "wind_kt": 115.0,
+      "pressure_mb": 951.0,
+      "category": "Cat4",
+      "category_code": 5,
+      "image_url": "/api/storms/AL041992/frame/35/image"
+    },
+    {
+      "timestamp": "1992-08-24T18:00:00",
+      "lat": 25.8,
+      "lon": -83.1,
+      "wind_kt": 115.0,
+      "pressure_mb": 947.0,
+      "category": "Cat4",
+      "category_code": 5,
+      "image_url": "/api/storms/AL041992/frame/36/image"
+    },
+    {
+      "timestamp": "1992-08-25T00:00:00",
+      "lat": 26.2,
+      "lon": -85.0,
+      "wind_kt": 115.0,
+      "pressure_mb": 943.0,
+      "category": "Cat4",
+      "category_code": 5,
+      "image_url": "/api/storms/AL041992/frame/37/image"
+    },
+    {
+      "timestamp": "1992-08-25T06:00:00",
+      "lat": 26.6,
+      "lon": -86.7,
+      "wind_kt": 115.0,
+      "pressure_mb": 948.0,
+      "category": "Cat4",
+      "category_code": 5,
+      "image_url": "/api/storms/AL041992/frame/38/image"
+    },
+    {
+      "timestamp": "1992-08-25T12:00:00",
+      "lat": 27.2,
+      "lon": -88.2,
+      "wind_kt": 120.0,
+      "pressure_mb": 946.0,
+      "category": "Cat4",
+      "category_code": 5,
+      "image_url": "/api/storms/AL041992/frame/39/image"
+    },
+    {
+      "timestamp": "1992-08-25T18:00:00",
+      "lat": 27.8,
+      "lon": -89.6,
+      "wind_kt": 125.0,
+      "pressure_mb": 941.0,
+      "category": "Cat4",
+      "category_code": 5,
+      "image_url": "/api/storms/AL041992/frame/40/image"
+    },
+    {
+      "timestamp": "1992-08-26T00:00:00",
+      "lat": 28.5,
+      "lon": -90.5,
+      "wind_kt": 125.0,
+      "pressure_mb": 937.0,
+      "category": "Cat4",
+      "category_code": 5,
+      "image_url": "/api/storms/AL041992/frame/41/image"
+    },
+    {
+      "timestamp": "1992-08-26T06:00:00",
+      "lat": 29.2,
+      "lon": -91.3,
+      "wind_kt": 120.0,
+      "pressure_mb": 955.0,
+      "category": "Cat4",
+      "category_code": 5,
+      "image_url": "/api/storms/AL041992/frame/42/image"
+    },
+    {
+      "timestamp": "1992-08-26T08:30:00",
+      "lat": 29.6,
+      "lon": -91.5,
+      "wind_kt": 100.0,
+      "pressure_mb": 956.0,
+      "category": "Cat3",
+      "category_code": 4,
+      "image_url": "/api/storms/AL041992/frame/43/image"
+    },
+    {
+      "timestamp": "1992-08-26T12:00:00",
+      "lat": 30.1,
+      "lon": -91.7,
+      "wind_kt": 80.0,
+      "pressure_mb": 973.0,
+      "category": "Cat1",
+      "category_code": 2,
+      "image_url": "/api/storms/AL041992/frame/44/image"
+    },
+    {
+      "timestamp": "1992-08-26T18:00:00",
+      "lat": 30.9,
+      "lon": -91.6,
+      "wind_kt": 50.0,
+      "pressure_mb": 991.0,
+      "category": "TS",
+      "category_code": 1,
+      "image_url": "/api/storms/AL041992/frame/45/image"
+    },
+    {
+      "timestamp": "1992-08-27T00:00:00",
+      "lat": 31.5,
+      "lon": -91.1,
+      "wind_kt": 35.0,
+      "pressure_mb": 995.0,
+      "category": "TS",
+      "category_code": 1,
+      "image_url": "/api/storms/AL041992/frame/46/image"
+    },
+    {
+      "timestamp": "1992-08-27T06:00:00",
+      "lat": 32.1,
+      "lon": -90.5,
+      "wind_kt": 30.0,
+      "pressure_mb": 997.0,
+      "category": "TD",
+      "category_code": 0,
+      "image_url": "/api/storms/AL041992/frame/47/image"
+    },
+    {
+      "timestamp": "1992-08-27T12:00:00",
+      "lat": 32.8,
+      "lon": -89.6,
+      "wind_kt": 30.0,
+      "pressure_mb": 998.0,
+      "category": "TD",
+      "category_code": 0,
+      "image_url": "/api/storms/AL041992/frame/48/image"
+    },
+    {
+      "timestamp": "1992-08-27T18:00:00",
+      "lat": 33.6,
+      "lon": -88.4,
+      "wind_kt": 25.0,
+      "pressure_mb": 999.0,
+      "category": "TD",
+      "category_code": 0,
+      "image_url": "/api/storms/AL041992/frame/49/image"
+    },
+    {
+      "timestamp": "1992-08-28T00:00:00",
+      "lat": 34.4,
+      "lon": -86.7,
+      "wind_kt": 20.0,
+      "pressure_mb": 1000.0,
+      "category": "TD",
+      "category_code": 0,
+      "image_url": "/api/storms/AL041992/frame/50/image"
+    },
+    {
+      "timestamp": "1992-08-28T06:00:00",
+      "lat": 35.4,
+      "lon": -84.0,
+      "wind_kt": 20.0,
+      "pressure_mb": 1000.0,
+      "category": "TD",
+      "category_code": 0,
+      "image_url": "/api/storms/AL041992/frame/51/image"
+    }
+  ]
+}

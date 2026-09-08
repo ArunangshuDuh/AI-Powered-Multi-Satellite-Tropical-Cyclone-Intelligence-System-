@@ -1,0 +1,486 @@
+{
+  "storm_id": "AL252005",
+  "name": "WILMA",
+  "frames": [
+    {
+      "timestamp": "2005-10-15T18:00:00",
+      "lat": 17.6,
+      "lon": -78.5,
+      "wind_kt": 25.0,
+      "pressure_mb": 1004.0,
+      "category": "TD",
+      "category_code": 0,
+      "image_url": "/api/storms/AL252005/frame/0/image"
+    },
+    {
+      "timestamp": "2005-10-16T00:00:00",
+      "lat": 17.6,
+      "lon": -78.8,
+      "wind_kt": 25.0,
+      "pressure_mb": 1004.0,
+      "category": "TD",
+      "category_code": 0,
+      "image_url": "/api/storms/AL252005/frame/1/image"
+    },
+    {
+      "timestamp": "2005-10-16T06:00:00",
+      "lat": 17.5,
+      "lon": -79.0,
+      "wind_kt": 30.0,
+      "pressure_mb": 1003.0,
+      "category": "TD",
+      "category_code": 0,
+      "image_url": "/api/storms/AL252005/frame/2/image"
+    },
+    {
+      "timestamp": "2005-10-16T12:00:00",
+      "lat": 17.5,
+      "lon": -79.2,
+      "wind_kt": 30.0,
+      "pressure_mb": 1003.0,
+      "category": "TD",
+      "category_code": 0,
+      "image_url": "/api/storms/AL252005/frame/3/image"
+    },
+    {
+      "timestamp": "2005-10-16T18:00:00",
+      "lat": 17.5,
+      "lon": -79.4,
+      "wind_kt": 30.0,
+      "pressure_mb": 1002.0,
+      "category": "TD",
+      "category_code": 0,
+      "image_url": "/api/storms/AL252005/frame/4/image"
+    },
+    {
+      "timestamp": "2005-10-17T00:00:00",
+      "lat": 17.4,
+      "lon": -79.6,
+      "wind_kt": 30.0,
+      "pressure_mb": 1001.0,
+      "category": "TD",
+      "category_code": 0,
+      "image_url": "/api/storms/AL252005/frame/5/image"
+    },
+    {
+      "timestamp": "2005-10-17T06:00:00",
+      "lat": 16.9,
+      "lon": -79.6,
+      "wind_kt": 35.0,
+      "pressure_mb": 1000.0,
+      "category": "TS",
+      "category_code": 1,
+      "image_url": "/api/storms/AL252005/frame/6/image"
+    },
+    {
+      "timestamp": "2005-10-17T12:00:00",
+      "lat": 16.3,
+      "lon": -79.7,
+      "wind_kt": 40.0,
+      "pressure_mb": 999.0,
+      "category": "TS",
+      "category_code": 1,
+      "image_url": "/api/storms/AL252005/frame/7/image"
+    },
+    {
+      "timestamp": "2005-10-17T18:00:00",
+      "lat": 16.0,
+      "lon": -79.8,
+      "wind_kt": 45.0,
+      "pressure_mb": 997.0,
+      "category": "TS",
+      "category_code": 1,
+      "image_url": "/api/storms/AL252005/frame/8/image"
+    },
+    {
+      "timestamp": "2005-10-18T00:00:00",
+      "lat": 15.8,
+      "lon": -79.9,
+      "wind_kt": 55.0,
+      "pressure_mb": 988.0,
+      "category": "TS",
+      "category_code": 1,
+      "image_url": "/api/storms/AL252005/frame/9/image"
+    },
+    {
+      "timestamp": "2005-10-18T06:00:00",
+      "lat": 15.7,
+      "lon": -79.9,
+      "wind_kt": 60.0,
+      "pressure_mb": 982.0,
+      "category": "TS",
+      "category_code": 1,
+      "image_url": "/api/storms/AL252005/frame/10/image"
+    },
+    {
+      "timestamp": "2005-10-18T12:00:00",
+      "lat": 16.2,
+      "lon": -80.3,
+      "wind_kt": 65.0,
+      "pressure_mb": 979.0,
+      "category": "Cat1",
+      "category_code": 2,
+      "image_url": "/api/storms/AL252005/frame/11/image"
+    },
+    {
+      "timestamp": "2005-10-18T18:00:00",
+      "lat": 16.6,
+      "lon": -81.1,
+      "wind_kt": 75.0,
+      "pressure_mb": 975.0,
+      "category": "Cat1",
+      "category_code": 2,
+      "image_url": "/api/storms/AL252005/frame/12/image"
+    },
+    {
+      "timestamp": "2005-10-19T00:00:00",
+      "lat": 16.6,
+      "lon": -81.8,
+      "wind_kt": 130.0,
+      "pressure_mb": 946.0,
+      "category": "Cat4",
+      "category_code": 5,
+      "image_url": "/api/storms/AL252005/frame/13/image"
+    },
+    {
+      "timestamp": "2005-10-19T06:00:00",
+      "lat": 17.0,
+      "lon": -82.2,
+      "wind_kt": 150.0,
+      "pressure_mb": 892.0,
+      "category": "Cat5",
+      "category_code": 6,
+      "image_url": "/api/storms/AL252005/frame/14/image"
+    },
+    {
+      "timestamp": "2005-10-19T12:00:00",
+      "lat": 17.3,
+      "lon": -82.8,
+      "wind_kt": 160.0,
+      "pressure_mb": 882.0,
+      "category": "Cat5",
+      "category_code": 6,
+      "image_url": "/api/storms/AL252005/frame/15/image"
+    },
+    {
+      "timestamp": "2005-10-19T18:00:00",
+      "lat": 17.4,
+      "lon": -83.4,
+      "wind_kt": 140.0,
+      "pressure_mb": 892.0,
+      "category": "Cat5",
+      "category_code": 6,
+      "image_url": "/api/storms/AL252005/frame/16/image"
+    },
+    {
+      "timestamp": "2005-10-20T00:00:00",
+      "lat": 17.9,
+      "lon": -84.0,
+      "wind_kt": 135.0,
+      "pressure_mb": 892.0,
+      "category": "Cat4",
+      "category_code": 5,
+      "image_url": "/api/storms/AL252005/frame/17/image"
+    },
+    {
+      "timestamp": "2005-10-20T06:00:00",
+      "lat": 18.1,
+      "lon": -84.7,
+      "wind_kt": 130.0,
+      "pressure_mb": 901.0,
+      "category": "Cat4",
+      "category_code": 5,
+      "image_url": "/api/storms/AL252005/frame/18/image"
+    },
+    {
+      "timestamp": "2005-10-20T12:00:00",
+      "lat": 18.3,
+      "lon": -85.2,
+      "wind_kt": 130.0,
+      "pressure_mb": 910.0,
+      "category": "Cat4",
+      "category_code": 5,
+      "image_url": "/api/storms/AL252005/frame/19/image"
+    },
+    {
+      "timestamp": "2005-10-20T18:00:00",
+      "lat": 18.6,
+      "lon": -85.5,
+      "wind_kt": 130.0,
+      "pressure_mb": 917.0,
+      "category": "Cat4",
+      "category_code": 5,
+      "image_url": "/api/storms/AL252005/frame/20/image"
+    },
+    {
+      "timestamp": "2005-10-21T00:00:00",
+      "lat": 19.1,
+      "lon": -85.8,
+      "wind_kt": 130.0,
+      "pressure_mb": 924.0,
+      "category": "Cat4",
+      "category_code": 5,
+      "image_url": "/api/storms/AL252005/frame/21/image"
+    },
+    {
+      "timestamp": "2005-10-21T06:00:00",
+      "lat": 19.5,
+      "lon": -86.1,
+      "wind_kt": 130.0,
+      "pressure_mb": 930.0,
+      "category": "Cat4",
+      "category_code": 5,
+      "image_url": "/api/storms/AL252005/frame/22/image"
+    },
+    {
+      "timestamp": "2005-10-21T12:00:00",
+      "lat": 20.1,
+      "lon": -86.4,
+      "wind_kt": 125.0,
+      "pressure_mb": 929.0,
+      "category": "Cat4",
+      "category_code": 5,
+      "image_url": "/api/storms/AL252005/frame/23/image"
+    },
+    {
+      "timestamp": "2005-10-21T18:00:00",
+      "lat": 20.3,
+      "lon": -86.7,
+      "wind_kt": 120.0,
+      "pressure_mb": 926.0,
+      "category": "Cat4",
+      "category_code": 5,
+      "image_url": "/api/storms/AL252005/frame/24/image"
+    },
+    {
+      "timestamp": "2005-10-21T21:45:00",
+      "lat": 20.6,
+      "lon": -86.8,
+      "wind_kt": 130.0,
+      "pressure_mb": 927.0,
+      "category": "Cat4",
+      "category_code": 5,
+      "image_url": "/api/storms/AL252005/frame/25/image"
+    },
+    {
+      "timestamp": "2005-10-22T00:00:00",
+      "lat": 20.6,
+      "lon": -86.8,
+      "wind_kt": 120.0,
+      "pressure_mb": 930.0,
+      "category": "Cat4",
+      "category_code": 5,
+      "image_url": "/api/storms/AL252005/frame/26/image"
+    },
+    {
+      "timestamp": "2005-10-22T03:30:00",
+      "lat": 20.8,
+      "lon": -86.9,
+      "wind_kt": 115.0,
+      "pressure_mb": 933.0,
+      "category": "Cat4",
+      "category_code": 5,
+      "image_url": "/api/storms/AL252005/frame/27/image"
+    },
+    {
+      "timestamp": "2005-10-22T06:00:00",
+      "lat": 20.8,
+      "lon": -87.0,
+      "wind_kt": 110.0,
+      "pressure_mb": 935.0,
+      "category": "Cat3",
+      "category_code": 4,
+      "image_url": "/api/storms/AL252005/frame/28/image"
+    },
+    {
+      "timestamp": "2005-10-22T12:00:00",
+      "lat": 21.0,
+      "lon": -87.1,
+      "wind_kt": 100.0,
+      "pressure_mb": 947.0,
+      "category": "Cat3",
+      "category_code": 4,
+      "image_url": "/api/storms/AL252005/frame/29/image"
+    },
+    {
+      "timestamp": "2005-10-22T18:00:00",
+      "lat": 21.3,
+      "lon": -87.1,
+      "wind_kt": 85.0,
+      "pressure_mb": 958.0,
+      "category": "Cat2",
+      "category_code": 3,
+      "image_url": "/api/storms/AL252005/frame/30/image"
+    },
+    {
+      "timestamp": "2005-10-23T00:00:00",
+      "lat": 21.6,
+      "lon": -87.0,
+      "wind_kt": 85.0,
+      "pressure_mb": 960.0,
+      "category": "Cat2",
+      "category_code": 3,
+      "image_url": "/api/storms/AL252005/frame/31/image"
+    },
+    {
+      "timestamp": "2005-10-23T06:00:00",
+      "lat": 21.8,
+      "lon": -86.8,
+      "wind_kt": 85.0,
+      "pressure_mb": 962.0,
+      "category": "Cat2",
+      "category_code": 3,
+      "image_url": "/api/storms/AL252005/frame/32/image"
+    },
+    {
+      "timestamp": "2005-10-23T12:00:00",
+      "lat": 22.4,
+      "lon": -86.1,
+      "wind_kt": 85.0,
+      "pressure_mb": 961.0,
+      "category": "Cat2",
+      "category_code": 3,
+      "image_url": "/api/storms/AL252005/frame/33/image"
+    },
+    {
+      "timestamp": "2005-10-23T18:00:00",
+      "lat": 23.1,
+      "lon": -85.4,
+      "wind_kt": 90.0,
+      "pressure_mb": 963.0,
+      "category": "Cat2",
+      "category_code": 3,
+      "image_url": "/api/storms/AL252005/frame/34/image"
+    },
+    {
+      "timestamp": "2005-10-24T00:00:00",
+      "lat": 24.0,
+      "lon": -84.3,
+      "wind_kt": 95.0,
+      "pressure_mb": 958.0,
+      "category": "Cat2",
+      "category_code": 3,
+      "image_url": "/api/storms/AL252005/frame/35/image"
+    },
+    {
+      "timestamp": "2005-10-24T06:00:00",
+      "lat": 25.0,
+      "lon": -83.1,
+      "wind_kt": 110.0,
+      "pressure_mb": 953.0,
+      "category": "Cat3",
+      "category_code": 4,
+      "image_url": "/api/storms/AL252005/frame/36/image"
+    },
+    {
+      "timestamp": "2005-10-24T10:30:00",
+      "lat": 25.9,
+      "lon": -81.7,
+      "wind_kt": 105.0,
+      "pressure_mb": 950.0,
+      "category": "Cat3",
+      "category_code": 4,
+      "image_url": "/api/storms/AL252005/frame/37/image"
+    },
+    {
+      "timestamp": "2005-10-24T12:00:00",
+      "lat": 26.2,
+      "lon": -81.0,
+      "wind_kt": 95.0,
+      "pressure_mb": 950.0,
+      "category": "Cat2",
+      "category_code": 3,
+      "image_url": "/api/storms/AL252005/frame/38/image"
+    },
+    {
+      "timestamp": "2005-10-24T18:00:00",
+      "lat": 28.0,
+      "lon": -78.8,
+      "wind_kt": 105.0,
+      "pressure_mb": 955.0,
+      "category": "Cat3",
+      "category_code": 4,
+      "image_url": "/api/storms/AL252005/frame/39/image"
+    },
+    {
+      "timestamp": "2005-10-25T00:00:00",
+      "lat": 30.1,
+      "lon": -76.0,
+      "wind_kt": 110.0,
+      "pressure_mb": 955.0,
+      "category": "Cat3",
+      "category_code": 4,
+      "image_url": "/api/storms/AL252005/frame/40/image"
+    },
+    {
+      "timestamp": "2005-10-25T06:00:00",
+      "lat": 33.3,
+      "lon": -72.0,
+      "wind_kt": 100.0,
+      "pressure_mb": 963.0,
+      "category": "Cat3",
+      "category_code": 4,
+      "image_url": "/api/storms/AL252005/frame/41/image"
+    },
+    {
+      "timestamp": "2005-10-25T12:00:00",
+      "lat": 36.8,
+      "lon": -67.9,
+      "wind_kt": 90.0,
+      "pressure_mb": 970.0,
+      "category": "Cat2",
+      "category_code": 3,
+      "image_url": "/api/storms/AL252005/frame/42/image"
+    },
+    {
+      "timestamp": "2005-10-25T18:00:00",
+      "lat": 40.5,
+      "lon": -63.5,
+      "wind_kt": 75.0,
+      "pressure_mb": 976.0,
+      "category": "Cat1",
+      "category_code": 2,
+      "image_url": "/api/storms/AL252005/frame/43/image"
+    },
+    {
+      "timestamp": "2005-10-26T00:00:00",
+      "lat": 42.5,
+      "lon": -60.0,
+      "wind_kt": 60.0,
+      "pressure_mb": 978.0,
+      "category": "TS",
+      "category_code": 1,
+      "image_url": "/api/storms/AL252005/frame/44/image"
+    },
+    {
+      "timestamp": "2005-10-26T06:00:00",
+      "lat": 44.0,
+      "lon": -57.5,
+      "wind_kt": 55.0,
+      "pressure_mb": 982.0,
+      "category": "TS",
+      "category_code": 1,
+      "image_url": "/api/storms/AL252005/frame/45/image"
+    },
+    {
+      "timestamp": "2005-10-26T12:00:00",
+      "lat": 45.0,
+      "lon": -55.0,
+      "wind_kt": 50.0,
+      "pressure_mb": 986.0,
+      "category": "TS",
+      "category_code": 1,
+      "image_url": "/api/storms/AL252005/frame/46/image"
+    },
+    {
+      "timestamp": "2005-10-26T18:00:00",
+      "lat": 45.5,
+      "lon": -52.0,
+      "wind_kt": 40.0,
+      "pressure_mb": 990.0,
+      "category": "TS",
+      "category_code": 1,
+      "image_url": "/api/storms/AL252005/frame/47/image"
+    }
+  ]
+}

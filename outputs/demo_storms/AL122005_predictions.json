@@ -1,0 +1,715 @@
+{
+  "3": {
+    "frame_index": 3,
+    "predicted_category": "TS",
+    "predicted_category_code": 1,
+    "predicted_wind_kt": 36.4,
+    "predicted_pressure_mb": 1004.8,
+    "confidence": 0.898,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 37.0,
+        "pressure_mb": 1004.3
+      },
+      "plus_12h": {
+        "wind_kt": 38.7,
+        "pressure_mb": 1004.0
+      },
+      "plus_24h": {
+        "wind_kt": 41.5,
+        "pressure_mb": 1002.5
+      }
+    },
+    "rapid_intensification_flag": false
+  },
+  "4": {
+    "frame_index": 4,
+    "predicted_category": "TS",
+    "predicted_category_code": 1,
+    "predicted_wind_kt": 42.3,
+    "predicted_pressure_mb": 1003.2,
+    "confidence": 0.994,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 42.8,
+        "pressure_mb": 1001.9
+      },
+      "plus_12h": {
+        "wind_kt": 45.0,
+        "pressure_mb": 1001.1
+      },
+      "plus_24h": {
+        "wind_kt": 48.4,
+        "pressure_mb": 998.8
+      }
+    },
+    "rapid_intensification_flag": false
+  },
+  "5": {
+    "frame_index": 5,
+    "predicted_category": "TS",
+    "predicted_category_code": 1,
+    "predicted_wind_kt": 46.2,
+    "predicted_pressure_mb": 1001.0,
+    "confidence": 0.999,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 48.5,
+        "pressure_mb": 999.5
+      },
+      "plus_12h": {
+        "wind_kt": 51.4,
+        "pressure_mb": 997.2
+      },
+      "plus_24h": {
+        "wind_kt": 54.1,
+        "pressure_mb": 995.6
+      }
+    },
+    "rapid_intensification_flag": false
+  },
+  "6": {
+    "frame_index": 6,
+    "predicted_category": "TS",
+    "predicted_category_code": 1,
+    "predicted_wind_kt": 49.8,
+    "predicted_pressure_mb": 997.3,
+    "confidence": 1.0,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 52.6,
+        "pressure_mb": 995.8
+      },
+      "plus_12h": {
+        "wind_kt": 54.5,
+        "pressure_mb": 993.9
+      },
+      "plus_24h": {
+        "wind_kt": 56.0,
+        "pressure_mb": 993.1
+      }
+    },
+    "rapid_intensification_flag": false
+  },
+  "7": {
+    "frame_index": 7,
+    "predicted_category": "TS",
+    "predicted_category_code": 1,
+    "predicted_wind_kt": 53.8,
+    "predicted_pressure_mb": 994.7,
+    "confidence": 1.0,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 56.9,
+        "pressure_mb": 992.9
+      },
+      "plus_12h": {
+        "wind_kt": 57.9,
+        "pressure_mb": 991.6
+      },
+      "plus_24h": {
+        "wind_kt": 59.1,
+        "pressure_mb": 990.8
+      }
+    },
+    "rapid_intensification_flag": false
+  },
+  "8": {
+    "frame_index": 8,
+    "predicted_category": "TS",
+    "predicted_category_code": 1,
+    "predicted_wind_kt": 58.8,
+    "predicted_pressure_mb": 990.7,
+    "confidence": 0.951,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 63.4,
+        "pressure_mb": 987.6
+      },
+      "plus_12h": {
+        "wind_kt": 64.1,
+        "pressure_mb": 986.8
+      },
+      "plus_24h": {
+        "wind_kt": 66.1,
+        "pressure_mb": 985.1
+      }
+    },
+    "rapid_intensification_flag": false
+  },
+  "9": {
+    "frame_index": 9,
+    "predicted_category": "Cat1",
+    "predicted_category_code": 2,
+    "predicted_wind_kt": 69.1,
+    "predicted_pressure_mb": 982.7,
+    "confidence": 0.998,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 73.0,
+        "pressure_mb": 979.2
+      },
+      "plus_12h": {
+        "wind_kt": 76.8,
+        "pressure_mb": 976.9
+      },
+      "plus_24h": {
+        "wind_kt": 78.3,
+        "pressure_mb": 974.3
+      }
+    },
+    "rapid_intensification_flag": false
+  },
+  "10": {
+    "frame_index": 10,
+    "predicted_category": "Cat1",
+    "predicted_category_code": 2,
+    "predicted_wind_kt": 71.5,
+    "predicted_pressure_mb": 982.8,
+    "confidence": 0.999,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 69.6,
+        "pressure_mb": 982.9
+      },
+      "plus_12h": {
+        "wind_kt": 70.5,
+        "pressure_mb": 982.3
+      },
+      "plus_24h": {
+        "wind_kt": 67.7,
+        "pressure_mb": 981.9
+      }
+    },
+    "rapid_intensification_flag": false
+  },
+  "11": {
+    "frame_index": 11,
+    "predicted_category": "Cat1",
+    "predicted_category_code": 2,
+    "predicted_wind_kt": 67.4,
+    "predicted_pressure_mb": 986.2,
+    "confidence": 0.995,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 62.5,
+        "pressure_mb": 988.5
+      },
+      "plus_12h": {
+        "wind_kt": 60.8,
+        "pressure_mb": 988.4
+      },
+      "plus_24h": {
+        "wind_kt": 57.0,
+        "pressure_mb": 990.9
+      }
+    },
+    "rapid_intensification_flag": false
+  },
+  "12": {
+    "frame_index": 12,
+    "predicted_category": "Cat1",
+    "predicted_category_code": 2,
+    "predicted_wind_kt": 74.6,
+    "predicted_pressure_mb": 979.5,
+    "confidence": 0.999,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 78.3,
+        "pressure_mb": 975.6
+      },
+      "plus_12h": {
+        "wind_kt": 80.9,
+        "pressure_mb": 973.6
+      },
+      "plus_24h": {
+        "wind_kt": 81.0,
+        "pressure_mb": 972.8
+      }
+    },
+    "rapid_intensification_flag": false
+  },
+  "13": {
+    "frame_index": 13,
+    "predicted_category": "Cat2",
+    "predicted_category_code": 3,
+    "predicted_wind_kt": 85.5,
+    "predicted_pressure_mb": 968.8,
+    "confidence": 0.997,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 90.7,
+        "pressure_mb": 965.3
+      },
+      "plus_12h": {
+        "wind_kt": 94.6,
+        "pressure_mb": 961.8
+      },
+      "plus_24h": {
+        "wind_kt": 94.5,
+        "pressure_mb": 960.8
+      }
+    },
+    "rapid_intensification_flag": false
+  },
+  "14": {
+    "frame_index": 14,
+    "predicted_category": "Cat2",
+    "predicted_category_code": 3,
+    "predicted_wind_kt": 91.5,
+    "predicted_pressure_mb": 961.4,
+    "confidence": 1.0,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 92.6,
+        "pressure_mb": 960.5
+      },
+      "plus_12h": {
+        "wind_kt": 93.6,
+        "pressure_mb": 959.6
+      },
+      "plus_24h": {
+        "wind_kt": 91.2,
+        "pressure_mb": 960.8
+      }
+    },
+    "rapid_intensification_flag": false
+  },
+  "15": {
+    "frame_index": 15,
+    "predicted_category": "Cat2",
+    "predicted_category_code": 3,
+    "predicted_wind_kt": 96.6,
+    "predicted_pressure_mb": 950.9,
+    "confidence": 0.966,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 95.3,
+        "pressure_mb": 951.2
+      },
+      "plus_12h": {
+        "wind_kt": 93.6,
+        "pressure_mb": 952.4
+      },
+      "plus_24h": {
+        "wind_kt": 86.6,
+        "pressure_mb": 957.8
+      }
+    },
+    "rapid_intensification_flag": false
+  },
+  "16": {
+    "frame_index": 16,
+    "predicted_category": "Cat3",
+    "predicted_category_code": 4,
+    "predicted_wind_kt": 102.9,
+    "predicted_pressure_mb": 941.7,
+    "confidence": 0.997,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 100.3,
+        "pressure_mb": 943.0
+      },
+      "plus_12h": {
+        "wind_kt": 97.1,
+        "pressure_mb": 944.9
+      },
+      "plus_24h": {
+        "wind_kt": 85.6,
+        "pressure_mb": 953.7
+      }
+    },
+    "rapid_intensification_flag": false
+  },
+  "17": {
+    "frame_index": 17,
+    "predicted_category": "Cat3",
+    "predicted_category_code": 4,
+    "predicted_wind_kt": 100.7,
+    "predicted_pressure_mb": 945.1,
+    "confidence": 0.988,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 95.1,
+        "pressure_mb": 949.0
+      },
+      "plus_12h": {
+        "wind_kt": 89.9,
+        "pressure_mb": 952.6
+      },
+      "plus_24h": {
+        "wind_kt": 79.5,
+        "pressure_mb": 960.6
+      }
+    },
+    "rapid_intensification_flag": false
+  },
+  "18": {
+    "frame_index": 18,
+    "predicted_category": "Cat3",
+    "predicted_category_code": 4,
+    "predicted_wind_kt": 103.6,
+    "predicted_pressure_mb": 939.8,
+    "confidence": 0.999,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 99.1,
+        "pressure_mb": 942.8
+      },
+      "plus_12h": {
+        "wind_kt": 94.8,
+        "pressure_mb": 945.8
+      },
+      "plus_24h": {
+        "wind_kt": 83.0,
+        "pressure_mb": 954.8
+      }
+    },
+    "rapid_intensification_flag": false
+  },
+  "19": {
+    "frame_index": 19,
+    "predicted_category": "Cat4",
+    "predicted_category_code": 5,
+    "predicted_wind_kt": 128.1,
+    "predicted_pressure_mb": 931.4,
+    "confidence": 1.0,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 130.5,
+        "pressure_mb": 927.9
+      },
+      "plus_12h": {
+        "wind_kt": 131.7,
+        "pressure_mb": 926.1
+      },
+      "plus_24h": {
+        "wind_kt": 119.5,
+        "pressure_mb": 934.1
+      }
+    },
+    "rapid_intensification_flag": false
+  },
+  "20": {
+    "frame_index": 20,
+    "predicted_category": "Cat5",
+    "predicted_category_code": 6,
+    "predicted_wind_kt": 148.8,
+    "predicted_pressure_mb": 906.7,
+    "confidence": 0.999,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 143.0,
+        "pressure_mb": 909.8
+      },
+      "plus_12h": {
+        "wind_kt": 135.8,
+        "pressure_mb": 914.8
+      },
+      "plus_24h": {
+        "wind_kt": 120.8,
+        "pressure_mb": 928.2
+      }
+    },
+    "rapid_intensification_flag": false
+  },
+  "21": {
+    "frame_index": 21,
+    "predicted_category": "Cat5",
+    "predicted_category_code": 6,
+    "predicted_wind_kt": 151.5,
+    "predicted_pressure_mb": 901.4,
+    "confidence": 1.0,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 140.2,
+        "pressure_mb": 909.5
+      },
+      "plus_12h": {
+        "wind_kt": 129.3,
+        "pressure_mb": 918.3
+      },
+      "plus_24h": {
+        "wind_kt": 114.0,
+        "pressure_mb": 932.6
+      }
+    },
+    "rapid_intensification_flag": false
+  },
+  "22": {
+    "frame_index": 22,
+    "predicted_category": "Cat5",
+    "predicted_category_code": 6,
+    "predicted_wind_kt": 141.6,
+    "predicted_pressure_mb": 905.2,
+    "confidence": 0.997,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 129.9,
+        "pressure_mb": 915.2
+      },
+      "plus_12h": {
+        "wind_kt": 121.2,
+        "pressure_mb": 923.2
+      },
+      "plus_24h": {
+        "wind_kt": 107.8,
+        "pressure_mb": 936.2
+      }
+    },
+    "rapid_intensification_flag": false
+  },
+  "23": {
+    "frame_index": 23,
+    "predicted_category": "Cat4",
+    "predicted_category_code": 5,
+    "predicted_wind_kt": 124.0,
+    "predicted_pressure_mb": 917.4,
+    "confidence": 0.999,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 113.5,
+        "pressure_mb": 927.7
+      },
+      "plus_12h": {
+        "wind_kt": 108.3,
+        "pressure_mb": 933.2
+      },
+      "plus_24h": {
+        "wind_kt": 95.3,
+        "pressure_mb": 944.0
+      }
+    },
+    "rapid_intensification_flag": false
+  },
+  "24": {
+    "frame_index": 24,
+    "predicted_category": "Cat3",
+    "predicted_category_code": 4,
+    "predicted_wind_kt": 110.3,
+    "predicted_pressure_mb": 925.6,
+    "confidence": 0.968,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 98.5,
+        "pressure_mb": 935.7
+      },
+      "plus_12h": {
+        "wind_kt": 92.0,
+        "pressure_mb": 941.9
+      },
+      "plus_24h": {
+        "wind_kt": 77.2,
+        "pressure_mb": 953.3
+      }
+    },
+    "rapid_intensification_flag": false
+  },
+  "25": {
+    "frame_index": 25,
+    "predicted_category": "Cat3",
+    "predicted_category_code": 4,
+    "predicted_wind_kt": 111.6,
+    "predicted_pressure_mb": 927.1,
+    "confidence": 0.992,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 103.4,
+        "pressure_mb": 933.6
+      },
+      "plus_12h": {
+        "wind_kt": 98.2,
+        "pressure_mb": 938.2
+      },
+      "plus_24h": {
+        "wind_kt": 83.1,
+        "pressure_mb": 949.4
+      }
+    },
+    "rapid_intensification_flag": false
+  },
+  "26": {
+    "frame_index": 26,
+    "predicted_category": "Cat3",
+    "predicted_category_code": 4,
+    "predicted_wind_kt": 106.5,
+    "predicted_pressure_mb": 929.4,
+    "confidence": 1.0,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 95.5,
+        "pressure_mb": 937.4
+      },
+      "plus_12h": {
+        "wind_kt": 88.6,
+        "pressure_mb": 944.0
+      },
+      "plus_24h": {
+        "wind_kt": 73.6,
+        "pressure_mb": 955.9
+      }
+    },
+    "rapid_intensification_flag": false
+  },
+  "27": {
+    "frame_index": 27,
+    "predicted_category": "Cat1",
+    "predicted_category_code": 2,
+    "predicted_wind_kt": 81.3,
+    "predicted_pressure_mb": 950.3,
+    "confidence": 0.973,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 67.3,
+        "pressure_mb": 959.8
+      },
+      "plus_12h": {
+        "wind_kt": 61.0,
+        "pressure_mb": 963.9
+      },
+      "plus_24h": {
+        "wind_kt": 53.6,
+        "pressure_mb": 971.2
+      }
+    },
+    "rapid_intensification_flag": false
+  },
+  "28": {
+    "frame_index": 28,
+    "predicted_category": "TS",
+    "predicted_category_code": 1,
+    "predicted_wind_kt": 51.2,
+    "predicted_pressure_mb": 973.5,
+    "confidence": 1.0,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 50.1,
+        "pressure_mb": 977.1
+      },
+      "plus_12h": {
+        "wind_kt": 42.0,
+        "pressure_mb": 980.6
+      },
+      "plus_24h": {
+        "wind_kt": 36.1,
+        "pressure_mb": 985.6
+      }
+    },
+    "rapid_intensification_flag": false
+  },
+  "29": {
+    "frame_index": 29,
+    "predicted_category": "TS",
+    "predicted_category_code": 1,
+    "predicted_wind_kt": 39.7,
+    "predicted_pressure_mb": 982.4,
+    "confidence": 0.998,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 39.8,
+        "pressure_mb": 989.1
+      },
+      "plus_12h": {
+        "wind_kt": 32.3,
+        "pressure_mb": 990.3
+      },
+      "plus_24h": {
+        "wind_kt": 29.0,
+        "pressure_mb": 994.1
+      }
+    },
+    "rapid_intensification_flag": false
+  },
+  "30": {
+    "frame_index": 30,
+    "predicted_category": "TD",
+    "predicted_category_code": 0,
+    "predicted_wind_kt": 29.9,
+    "predicted_pressure_mb": 993.5,
+    "confidence": 0.914,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 30.0,
+        "pressure_mb": 1000.6
+      },
+      "plus_12h": {
+        "wind_kt": 24.7,
+        "pressure_mb": 1000.6
+      },
+      "plus_24h": {
+        "wind_kt": 26.9,
+        "pressure_mb": 1003.2
+      }
+    },
+    "rapid_intensification_flag": false
+  },
+  "31": {
+    "frame_index": 31,
+    "predicted_category": "TD",
+    "predicted_category_code": 0,
+    "predicted_wind_kt": 30.1,
+    "predicted_pressure_mb": 996.9,
+    "confidence": 0.964,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 31.9,
+        "pressure_mb": 1001.6
+      },
+      "plus_12h": {
+        "wind_kt": 29.7,
+        "pressure_mb": 1001.4
+      },
+      "plus_24h": {
+        "wind_kt": 33.1,
+        "pressure_mb": 1002.4
+      }
+    },
+    "rapid_intensification_flag": false
+  },
+  "32": {
+    "frame_index": 32,
+    "predicted_category": "TD",
+    "predicted_category_code": 0,
+    "predicted_wind_kt": 30.0,
+    "predicted_pressure_mb": 999.3,
+    "confidence": 0.984,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 32.3,
+        "pressure_mb": 1002.8
+      },
+      "plus_12h": {
+        "wind_kt": 31.4,
+        "pressure_mb": 1002.3
+      },
+      "plus_24h": {
+        "wind_kt": 34.4,
+        "pressure_mb": 1002.6
+      }
+    },
+    "rapid_intensification_flag": false
+  },
+  "33": {
+    "frame_index": 33,
+    "predicted_category": "TD",
+    "predicted_category_code": 0,
+    "predicted_wind_kt": 24.8,
+    "predicted_pressure_mb": 1002.7,
+    "confidence": 1.0,
+    "trend": {
+      "plus_6h": {
+        "wind_kt": 26.9,
+        "pressure_mb": 1006.0
+      },
+      "plus_12h": {
+        "wind_kt": 26.1,
+        "pressure_mb": 1005.2
+      },
+      "plus_24h": {
+        "wind_kt": 27.5,
+        "pressure_mb": 1006.3
+      }
+    },
+    "rapid_intensification_flag": false
+  }
+}

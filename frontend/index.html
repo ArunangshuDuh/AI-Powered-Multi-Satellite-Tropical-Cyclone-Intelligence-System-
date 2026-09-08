@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TC-AI // Storm Track Console</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#060b14;
+    --panel: rgba(13,22,38,0.86);
+    --panel-solid:#0d1626;
+    --border:#1c2c44;
+    --border-bright:#2c4468;
+    --text:#e7eef6;
+    --muted:#7c8ca3;
+    --dim:#4a5872;
+    --cyan:#37e6c4;
+    --warn:#ff7a45;
+    --live:#ff4d5e;
+    --cat-td:#6fa8d6;
+    --cat-ts:#3fd0c9;
+    --cat-1:#f4d35e;
+    --cat-2:#f0a93a;
+    --cat-3:#ef7b2e;
+    --cat-4:#e1483c;
+    --cat-5:#c23bd8;
+  }
+  *{box-sizing:border-box;}
+  html,body{
+    margin:0; padding:0; width:100%; height:100%; overflow:hidden;
+    background:var(--void); color:var(--text);
+    font-family:'JetBrains Mono', monospace;
+  }
+  h1,h2,h3,.head-font{ font-family:'Space Grotesk', sans-serif; }
+
+  #canvas-wrap{ position:fixed; inset:0; }
+  canvas{ display:block; }
+
+  /* ---------- HUD shell ---------- */
+  .hud-panel{
+    background:var(--panel);
+    border:1px solid var(--border);
+    backdrop-filter: blur(6px);
+    position:relative;
+  }
+  .hud-panel::before, .hud-panel::after{
+    content:""; position:absolute; width:10px; height:10px;
+    border-color:var(--border-bright); pointer-events:none;
+  }
+  .hud-panel::before{ top:-1px; left:-1px; border-top:1px solid; border-left:1px solid; }
+  .hud-panel::after{ bottom:-1px; right:-1px; border-bottom:1px solid; border-right:1px solid; }
+
+  .lbl{ font-size:10.5px; letter-spacing:.06em; color:var(--muted); }
+  .val{ font-family:'JetBrains Mono', monospace; color:var(--text); }
+
+  /* ---------- Top bar ---------- */
+  #topbar{
+    position:fixed; top:14px; left:14px; right:14px; z-index:20;
+    display:flex; align-items:center; gap:14px;
+    padding:10px 16px;
+  }
+  #topbar .title{
+    font-size:16px; font-weight:600; letter-spacing:.02em; white-space:nowrap;
+  }
+  #topbar .title span{ color:var(--cyan); }
+  #topbar .sub{ color:var(--muted); font-size:10.5px; margin-top:1px; }
+  .titleblock{ display:flex; flex-direction:column; padding-right:14px; border-right:1px solid var(--border); }
+
+  .connect-row{ display:flex; align-items:center; gap:8px; flex:1; }
+  .connect-row input{
+    flex:1; max-width:260px; background:#08101c; border:1px solid var(--border);
+    color:var(--text); font-family:'JetBrains Mono',monospace; font-size:11.5px;
+    padding:6px 8px; outline:none;
+  }
+  .connect-row input:focus{ border-color:var(--cyan); }
+  .btn{
+    background:#0e1a2c; border:1px solid var(--border-bright); color:var(--text);
+    font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.03em;
+    padding:6px 12px; cursor:pointer; transition:background .15s, color .15s;
+  }
+  .btn:hover{ background:var(--cyan); color:#04120f; }
+  .btn.small{ padding:4px 9px; font-size:10px; }
+  .btn.active{ background:var(--cyan); color:#04120f; border-color:var(--cyan); }
+
+  .status-led{ display:flex; align-items:center; gap:6px; font-size:10.5px; color:var(--muted); }
+  .dot{ width:7px; height:7px; border-radius:50%; background:var(--dim); box-shadow:0 0 0 rgba(0,0,0,0); }
+  .dot.ok{ background:var(--cyan); box-shadow:0 0 8px var(--cyan); }
+  .dot.bad{ background:var(--live); box-shadow:0 0 8px var(--live); }
+  .dot.pulse{ animation:pulse 1.4s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:.35;} }
+
+  /* ---------- Sidebar ---------- */
+  #sidebar{
+    position:fixed; top:76px; right:14px; bottom:132px; width:320px; z-index:20;
+    display:flex; flex-direction:column; overflow:hidden;
+  }
+  .tabs{ display:flex; border-bottom:1px solid var(--border); }
+  .tab{
+    flex:1; text-align:center; padding:9px 0; font-size:11px; letter-spacing:.05em;
+    color:var(--muted); cursor:pointer; border-bottom:2px solid transparent;
+  }
+  .tab.active{ color:var(--cyan); border-bottom-color:var(--cyan); }
+  .tab-body{ flex:1; overflow-y:auto; padding:10px; }
+  .tab-body::-webkit-scrollbar{ width:5px; }
+  .tab-body::-webkit-scrollbar-thumb{ background:var(--border-bright); }
+
+  .storm-item{
+    padding:8px 9px; margin-bottom:6px; border:1px solid var(--border);
+    cursor:pointer; display:flex; justify-content:space-between; align-items:center;
+    transition:border-color .15s;
+  }
+  .storm-item:hover{ border-color:var(--border-bright); }
+  .storm-item.sel{ border-color:var(--cyan); background:rgba(55,230,196,0.06); }
+  .storm-item .name{ font-family:'Space Grotesk',sans-serif; font-size:12.5px; }
+  .storm-item .yr{ color:var(--muted); font-size:10px; }
+  .chip{
+    font-size:9.5px; padding:2px 6px; border-radius:2px; color:#05121a; font-weight:700;
+    letter-spacing:.02em;
+  }
+
+  .telemetry{ padding-top:4px; }
+  .telemetry .row{
+    display:flex; justify-content:space-between; padding:5px 0;
+    border-bottom:1px dashed var(--border);
+  }
+  .telemetry .row .val{ font-size:12px; }
+  .section-h{
+    font-size:10.5px; letter-spacing:.08em; color:var(--cyan); margin:14px 0 6px;
+    display:flex; align-items:center; gap:6px;
+  }
+  .section-h::after{ content:""; flex:1; height:1px; background:var(--border); }
+
+  .trend-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin-top:6px; }
+  .trend-cell{ border:1px solid var(--border); padding:6px; text-align:center; }
+  .trend-cell .t{ font-size:9.5px; color:var(--muted); }
+  .trend-cell .w{ font-size:13px; margin-top:3px; }
+  .trend-cell .p{ font-size:9.5px; color:var(--muted); margin-top:2px; }
+
+  .ri-flag{
+    margin-top:10px; padding:7px 9px; font-size:10.5px; border:1px solid var(--warn);
+    color:var(--warn); display:none; align-items:center; gap:7px;
+  }
+  .ri-flag.show{ display:flex; }
+
+  .img-row{ display:flex; gap:6px; margin-top:8px; }
+  .img-row .thumb{
+    flex:1; border:1px solid var(--border); aspect-ratio:1/1; overflow:hidden;
+    background:#08101c; display:flex; align-items:center; justify-content:center;
+  }
+  .img-row .thumb img{ width:100%; height:100%; object-fit:cover; }
+  .img-row .thumb .t{ font-size:9px; color:var(--muted); }
+
+  .note{ font-size:10px; color:var(--dim); line-height:1.5; margin-top:10px; }
+  .empty-hint{ color:var(--muted); font-size:11px; line-height:1.6; padding:6px 2px; }
+
+  .live-item{ padding:8px 9px; margin-bottom:6px; border:1px solid var(--border); cursor:pointer; }
+  .live-item:hover{ border-color:var(--live); }
+  .live-item .name{ font-family:'Space Grotesk',sans-serif; font-size:12.5px; display:flex; align-items:center; gap:6px; }
+  .live-item .meta{ display:flex; gap:10px; margin-top:4px; font-size:10px; color:var(--muted); }
+
+  /* ---------- Legend ---------- */
+  #legend{
+    position:fixed; left:14px; bottom:132px; z-index:20; padding:9px 11px;
+    width:150px;
+  }
+  #legend .lg-row{ display:flex; align-items:center; gap:7px; font-size:10.5px; margin:3px 0; }
+  #legend .sw{ width:9px; height:9px; flex:none; }
+  #legend .lg-title{ font-size:10px; letter-spacing:.06em; color:var(--muted); margin-bottom:6px; }
+
+  /* ---------- Log ---------- */
+  #log{
+    position:fixed; left:14px; bottom:14px; z-index:20; width:340px; height:104px;
+    padding:7px 10px; overflow:hidden;
+  }
+  #log .lg-title{ font-size:10px; letter-spacing:.06em; color:var(--muted); margin-bottom:4px; }
+  #log-body{ font-size:10px; line-height:1.55; color:var(--muted); height:76px; overflow:hidden; }
+  #log-body .e{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  #log-body .e .ts{ color:var(--dim); }
+
+  /* ---------- Timeline ---------- */
+  #timeline{
+    position:fixed; left:14px; right:348px; bottom:14px; z-index:20;
+    padding:10px 16px; display:flex; flex-direction:column; gap:8px;
+  }
+  #timeline .row1{ display:flex; align-items:center; gap:12px; }
+  #timeline .storm-name{ font-family:'Space Grotesk',sans-serif; font-size:13px; white-space:nowrap; }
+  #timeline .ts-label{ font-size:11px; color:var(--muted); white-space:nowrap; min-width:150px; }
+  #timeline input[type=range]{
+    flex:1; -webkit-appearance:none; height:3px; background:var(--border);
+    outline:none; cursor:pointer;
+  }
+  #timeline input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none; width:12px; height:12px; background:var(--cyan);
+    border-radius:50%; cursor:pointer; box-shadow:0 0 6px var(--cyan);
+  }
+  .speed-group{ display:flex; gap:4px; }
+
+  /* ---------- Modal ---------- */
+  #sat-modal{
+    position:fixed; inset:0; z-index:50; background:rgba(3,7,13,0.86);
+    display:none; align-items:center; justify-content:center;
+  }
+  #sat-modal.show{ display:flex; }
+  #sat-modal .box{ width:min(760px,92vw); padding:16px; }
+  #sat-modal .box h3{ margin:0 0 10px; font-size:14px; }
+  #sat-modal .controls{ display:flex; gap:8px; margin-bottom:10px; flex-wrap:wrap; }
+  #sat-modal select{
+    background:#08101c; border:1px solid var(--border); color:var(--text);
+    font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 8px;
+  }
+  #sat-img-wrap{
+    border:1px solid var(--border); background:#08101c; min-height:280px;
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
+  }
+  #sat-img-wrap img{ width:100%; display:block; }
+  #sat-status{ font-size:10.5px; color:var(--muted); margin-top:8px; }
+
+  /* label sprites for live storms */
+  .globe-label{
+    position:fixed; z-index:15; pointer-events:none; transform:translate(-50%,-140%);
+    font-size:10px; color:var(--live); white-space:nowrap; text-shadow:0 0 6px #000, 0 0 3px #000;
+    display:flex; flex-direction:column; align-items:center; gap:2px;
+  }
+  .globe-label .ring{
+    width:14px; height:14px; border:1.5px solid var(--live); border-radius:50%;
+    animation:pulse 1.3s ease-in-out infinite;
+  }
+
+  #wind-note{
+    position:fixed; z-index:20; left:50%; top:14px; transform:translateX(-50%);
+    font-size:10px; color:var(--dim); pointer-events:none; text-align:center; display:none;
+  }
+
+  @media (max-width: 880px){
+    #sidebar{ display:none; }
+    #timeline{ right:14px; }
+    #log{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<div id="canvas-wrap"></div>
+
+<header id="topbar" class="hud-panel">
+  <div class="titleblock">
+    <div class="title">TC-AI <span>// STORM CONSOLE</span></div>
+    <div class="sub">tropical cyclone track &amp; intensity model — live view</div>
+  </div>
+  <div class="connect-row">
+    <span class="lbl">API</span>
+    <input id="api-base-input" type="text" value="http://127.0.0.1:8000" spellcheck="false" />
+    <button class="btn small" id="connect-btn">CONNECT</button>
+  </div>
+  <div class="status-led">
+    <div class="dot" id="conn-dot"></div>
+    <span id="conn-text">not connected</span>
+  </div>
+  <button class="btn small" id="rotate-toggle">AUTO-ROTATE: ON</button>
+</header>
+
+<aside id="sidebar" class="hud-panel">
+  <div class="tabs">
+    <div class="tab active" data-tab="hist">HISTORICAL</div>
+    <div class="tab" data-tab="live">LIVE (NHC)</div>
+  </div>
+
+  <div class="tab-body" id="tab-hist">
+    <div id="storm-list"><div class="empty-hint">Connect to the API to load demo storms.</div></div>
+
+    <div id="telemetry-block" style="display:none;">
+      <div class="section-h">FRAME TELEMETRY</div>
+      <div class="telemetry">
+        <div class="row"><span class="lbl">TIME</span><span class="val" id="t-time">—</span></div>
+        <div class="row"><span class="lbl">POSITION</span><span class="val" id="t-pos">—</span></div>
+        <div class="row"><span class="lbl">WIND</span><span class="val" id="t-wind">—</span></div>
+        <div class="row"><span class="lbl">PRESSURE</span><span class="val" id="t-pres">—</span></div>
+        <div class="row"><span class="lbl">CATEGORY</span><span class="val" id="t-cat">—</span></div>
+      </div>
+
+      <div class="section-h">MODEL FORECAST</div>
+      <div id="pred-empty" class="empty-hint">Not enough history yet at this frame for a model forecast.</div>
+      <div id="pred-block" style="display:none;">
+        <div class="telemetry">
+          <div class="row"><span class="lbl">PRED. CATEGORY</span><span class="val" id="p-cat">—</span></div>
+          <div class="row"><span class="lbl">CONFIDENCE</span><span class="val" id="p-conf">—</span></div>
+        </div>
+        <div class="trend-grid">
+          <div class="trend-cell"><div class="t">+6H</div><div class="w" id="p-6w">—</div><div class="p" id="p-6p">—</div></div>
+          <div class="trend-cell"><div class="t">+12H</div><div class="w" id="p-12w">—</div><div class="p" id="p-12p">—</div></div>
+          <div class="trend-cell"><div class="t">+24H</div><div class="w" id="p-24w">—</div><div class="p" id="p-24p">—</div></div>
+        </div>
+        <div class="ri-flag" id="ri-flag">⚠ RAPID INTENSIFICATION FLAG — model projects ≥30kt / 24h</div>
+      </div>
+
+      <div class="section-h">FRAME IMAGERY</div>
+      <div class="img-row">
+        <div class="thumb"><img id="img-frame" alt="" style="display:none;"><span class="t" id="img-frame-t">image</span></div>
+        <div class="thumb"><img id="img-gradcam" alt="" style="display:none;"><span class="t" id="img-gradcam-t">salience</span></div>
+      </div>
+      <div class="note">Frame imagery is a data-driven schematic (eye + band geometry, confidence heatmap) generated from real track/model values — not a satellite photo. See project README.</div>
+    </div>
+  </div>
+
+  <div class="tab-body" id="tab-live" style="display:none;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+      <span class="lbl">NHC ACTIVE STORMS</span>
+      <button class="btn small" id="refresh-live-btn">REFRESH</button>
+    </div>
+    <div id="live-list"><div class="empty-hint">Press refresh to query NOAA/NHC.</div></div>
+    <div class="section-h">SATELLITE</div>
+    <button class="btn small" id="open-sat-btn" style="width:100%;">VIEW CURRENT GOES IMAGE</button>
+    <div class="note">Live storm positions and the satellite image are real, current NOAA data fetched at request time. They are shown for situational awareness only — the trained model never consumes them; it only ever sees the historical numeric track data.</div>
+  </div>
+</aside>
+
+<div id="legend" class="hud-panel">
+  <div class="lg-title">SAFFIR-SIMPSON</div>
+  <div class="lg-row"><span class="sw" style="background:var(--cat-td)"></span>TD — Depression</div>
+  <div class="lg-row"><span class="sw" style="background:var(--cat-ts)"></span>TS — Tropical Storm</div>
+  <div class="lg-row"><span class="sw" style="background:var(--cat-1)"></span>Category 1</div>
+  <div class="lg-row"><span class="sw" style="background:var(--cat-2)"></span>Category 2</div>
+  <div class="lg-row"><span class="sw" style="background:var(--cat-3)"></span>Category 3</div>
+  <div class="lg-row"><span class="sw" style="background:var(--cat-4)"></span>Category 4</div>
+  <div class="lg-row"><span class="sw" style="background:var(--cat-5)"></span>Category 5</div>
+  <div class="lg-row"><span class="sw" style="background:var(--live); border-radius:50%;"></span>Live (NHC)</div>
+</div>
+
+<div id="log" class="hud-panel">
+  <div class="lg-title">SYSTEM LOG</div>
+  <div id="log-body"></div>
+</div>
+
+<footer id="timeline" class="hud-panel">
+  <div class="row1">
+    <span class="storm-name" id="tl-name">No storm selected</span>
+    <button class="btn small" id="play-btn">▶</button>
+    <span class="ts-label" id="tl-ts">—</span>
+    <input type="range" id="tl-range" min="0" max="0" value="0" step="1" disabled />
+    <div class="speed-group">
+      <button class="btn small" data-speed="1">1×</button>
+      <button class="btn small active" data-speed="2">2×</button>
+      <button class="btn small" data-speed="4">4×</button>
+    </div>
+  </div>
+</footer>
+
+<div id="wind-note">stylized wind-flow (cyclonic rotation direction is real physics; exact streaks are illustrative, not measured wind vectors)</div>
+
+<div id="sat-modal">
+  <div class="box hud-panel">
+    <h3>GOES Satellite — current image</h3>
+    <div class="controls">
+      <select id="sat-sat">
+        <option value="east">GOES-East</option>
+        <option value="west">GOES-West</option>
+      </select>
+      <select id="sat-region">
+        <option value="full_disk">Full disk</option>
+        <option value="caribbean">Caribbean</option>
+        <option value="gulf">Gulf of Mexico</option>
+        <option value="southeast_us">Southeast US</option>
+        <option value="northeast_us">Northeast US</option>
+        <option value="pacific_southwest">Pacific SW</option>
+        <option value="pacific_northwest">Pacific NW</option>
+      </select>
+      <button class="btn small" id="sat-load-btn">LOAD</button>
+      <button class="btn small" id="sat-close-btn" style="margin-left:auto;">CLOSE</button>
+    </div>
+    <div id="sat-img-wrap"><span class="empty-hint">No image loaded yet.</span></div>
+    <div id="sat-status"></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+"use strict";
+
+/* ============================================================
+   STATE
+   ============================================================ */
+let API_BASE = document.getElementById('api-base-input').value.replace(/\/$/, '');
+let connected = false;
+
+let storms = [];              // index list
+let selectedStorm = null;     // {storm_id, name, ...}
+let track = null;             // {frames:[...]}
+let predictionCache = new Map(); // frameIndex -> prediction or 'none'
+let frameIndex = 0;
+let playing = true;
+let speed = 2;
+let playAccum = 0;
+
+let liveStorms = [];
+
+const catColor = {
+  'TD': 0x6fa8d6, 'TS': 0x3fd0c9, 'Cat1': 0xf4d35e, 'Cat2': 0xf0a93a,
+  'Cat3': 0xef7b2e, 'Cat4': 0xe1483c, 'Cat5': 0xc23bd8
+};
+const catColorCss = {
+  'TD': '--cat-td', 'TS': '--cat-ts', 'Cat1': '--cat-1', 'Cat2': '--cat-2',
+  'Cat3': '--cat-3', 'Cat4': '--cat-4', 'Cat5': '--cat-5'
+};
+
+function log(msg, bad){
+  const body = document.getElementById('log-body');
+  const d = document.createElement('div');
+  d.className = 'e';
+  const t = new Date().toLocaleTimeString([], {hour12:false});
+  d.innerHTML = '<span class="ts">'+t+'</span> '+msg;
+  if(bad) d.style.color = 'var(--live)';
+  body.insertBefore(d, body.firstChild);
+  while(body.children.length > 6) body.removeChild(body.lastChild);
+}
+
+/* ============================================================
+   THREE.JS SCENE
+   ============================================================ */
+const wrap = document.getElementById('canvas-wrap');
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(42, window.innerWidth/window.innerHeight, 0.1, 1000);
+camera.position.set(0, 0, 6.4);
+
+const renderer = new THREE.WebGLRenderer({ antialias:true, alpha:true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+wrap.appendChild(renderer.domElement);
+
+// starfield
+(function starfield(){
+  const N = 2200;
+  const g = new THREE.BufferGeometry();
+  const pos = new Float32Array(N*3);
+  for(let i=0;i<N;i++){
+    const r = 60 + Math.random()*140;
+    const theta = Math.random()*Math.PI*2;
+    const phi = Math.acos(2*Math.random()-1);
+    pos[i*3]   = r*Math.sin(phi)*Math.cos(theta);
+    pos[i*3+1] = r*Math.sin(phi)*Math.sin(theta);
+    pos[i*3+2] = r*Math.cos(phi);
+  }
+  g.setAttribute('position', new THREE.BufferAttribute(pos,3));
+  const m = new THREE.PointsMaterial({ color:0x5a6a85, size:0.55, sizeAttenuation:true, transparent:true, opacity:0.7 });
+  scene.add(new THREE.Points(g,m));
+})();
+
+// lights
+scene.add(new THREE.AmbientLight(0x445566, 1.1));
+const sun = new THREE.DirectionalLight(0xffffff, 1.3);
+sun.position.set(5, 3, 4);
+scene.add(sun);
+
+// globe group (everything storm-related rotates with this)
+const GLOBE_R = 2;
+const globe = new THREE.Group();
+scene.add(globe);
+
+const earthGeo = new THREE.SphereGeometry(GLOBE_R, 64, 64);
+const loader = new THREE.TextureLoader();
+loader.crossOrigin = "anonymous";
+
+function proceduralEarthTexture(){
+  const c = document.createElement('canvas'); c.width = 1024; c.height = 512;
+  const ctx = c.getContext('2d');
+  const grad = ctx.createLinearGradient(0,0,0,512);
+  grad.addColorStop(0,'#0b2f4f'); grad.addColorStop(1,'#0a2038');
+  ctx.fillStyle = grad; ctx.fillRect(0,0,1024,512);
+  ctx.fillStyle = '#234d33';
+  const blobs = [
+    [150,120,90,140],[230,260,110,90],[300,150,60,60],
+    [520,90,140,70],[560,180,90,120],[600,300,130,80],
+    [740,110,120,150],[800,320,90,60],[880,180,70,90],
+    [420,340,150,60],[120,340,140,50]
+  ];
+  blobs.forEach(([x,y,w,h])=>{
+    ctx.beginPath(); ctx.ellipse(x,y,w,h,0,0,Math.PI*2); ctx.fill();
+  });
+  return new THREE.CanvasTexture(c);
+}
+
+const earthMat = new THREE.MeshPhongMaterial({ shininess:14, specular:0x2a3a4a });
+earthMat.map = proceduralEarthTexture();
+const earthMesh = new THREE.Mesh(earthGeo, earthMat);
+globe.add(earthMesh);
+
+// Real NASA satellite-composite imagery (Blue Marble), served from three.js's own
+// pinned r128 example assets on raw.githubusercontent.com (CORS-open, verified).
+// jsdelivr's gh-proxy mirror is tried second in case the primary host is blocked
+// on a given network; the crude procedural texture is the last-resort fallback
+// only, so the globe should essentially always show real imagery.
+const TEX_HOSTS = [
+  'https://raw.githubusercontent.com/mrdoob/three.js/r128/examples/textures/planets/',
+  'https://cdn.jsdelivr.net/gh/mrdoob/three.js@r128/examples/textures/planets/'
+];
+function loadWithFallback(filename, onLoad, onAllFailed){
+  let i = 0;
+  function tryNext(){
+    if(i >= TEX_HOSTS.length){ if(onAllFailed) onAllFailed(); return; }
+    const url = TEX_HOSTS[i] + filename;
+    i++;
+    loader.load(url, onLoad, undefined, tryNext);
+  }
+  tryNext();
+}
+
+loadWithFallback('earth_atmos_2048.jpg',
+  (tex)=>{ earthMat.map = tex; earthMat.needsUpdate = true; log('real satellite Earth texture loaded'); },
+  ()=>{ log('could not reach any texture host — showing procedural placeholder instead of real imagery', true); }
+);
+loadWithFallback('earth_specular_2048.jpg',
+  (tex)=>{ earthMat.specularMap = tex; earthMat.needsUpdate = true; }
+);
+
+// cloud layer
+const cloudGeo = new THREE.SphereGeometry(GLOBE_R*1.008, 48, 48);
+const cloudMat = new THREE.MeshPhongMaterial({ transparent:true, opacity:0.32, depthWrite:false });
+const cloudMesh = new THREE.Mesh(cloudGeo, cloudMat);
+globe.add(cloudMesh);
+loadWithFallback('earth_clouds_1024.png',
+  (tex)=>{ cloudMat.map = tex; cloudMat.needsUpdate = true; },
+  ()=>{ cloudMesh.visible = false; }
+);
+
+// atmosphere fresnel glow
+const atmoGeo = new THREE.SphereGeometry(GLOBE_R*1.06, 48, 48);
+const atmoMat = new THREE.ShaderMaterial({
+  transparent:true, side:THREE.BackSide, depthWrite:false,
+  uniforms:{ glowColor:{ value:new THREE.Color(0x37e6c4) } },
+  vertexShader:`
+    varying vec3 vNormal;
+    void main(){
+      vNormal = normalize(normalMatrix * normal);
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
+    }`,
+  fragmentShader:`
+    varying vec3 vNormal;
+    uniform vec3 glowColor;
+    void main(){
+      float intensity = pow(0.68 - dot(vNormal, vec3(0,0,1.0)), 3.0);
+      gl_FragColor = vec4(glowColor, clamp(intensity,0.0,1.0) * 0.55);
+    }`
+});
+globe.add(new THREE.Mesh(atmoGeo, atmoMat));
+
+/* -------- helpers -------- */
+function latLonToVec3(lat, lon, r){
+  const phi = (90 - lat) * Math.PI/180;
+  const theta = (lon + 180) * Math.PI/180;
+  return new THREE.Vector3(
+    -r*Math.sin(phi)*Math.cos(theta),
+    r*Math.cos(phi),
+    r*Math.sin(phi)*Math.sin(theta)
+  );
+}
+function colorForCat(cat){ return catColor[cat] !== undefined ? catColor[cat] : 0x9fb3cc; }
+
+/* -------- track rendering -------- */
+let trackLine = null, trackDots = null, stormMarker = null, stormGlow = null;
+let windParticles = null, windGeo = null, windBase = null;
+const WIND_N = 260;
+
+function clearTrackObjects(){
+  [trackLine, trackDots, stormMarker, stormGlow, windParticles].forEach(o=>{
+    if(o){ globe.remove(o); }
+  });
+  trackLine = trackDots = stormMarker = stormGlow = windParticles = null;
+}
+
+function buildTrack(frames){
+  clearTrackObjects();
+  const pts = frames.map(f => latLonToVec3(f.lat, f.lon, GLOBE_R*1.012));
+
+  // line
+  const lineGeo = new THREE.BufferGeometry().setFromPoints(pts);
+  const lineMat = new THREE.LineBasicMaterial({ color:0x37e6c4, transparent:true, opacity:0.85, linewidth:2 });
+  trackLine = new THREE.Line(lineGeo, lineMat);
+  globe.add(trackLine);
+
+  // dots per frame colored by category
+  const dotGroup = new THREE.Group();
+  frames.forEach((f,i)=>{
+    const g = new THREE.SphereGeometry(0.011, 8, 8);
+    const m = new THREE.MeshBasicMaterial({ color: colorForCat(f.category) });
+    const mesh = new THREE.Mesh(g,m);
+    mesh.position.copy(pts[i]);
+    dotGroup.add(mesh);
+  });
+  trackDots = dotGroup;
+  globe.add(trackDots);
+
+  // moving marker
+  const markerGeo = new THREE.SphereGeometry(0.028, 16, 16);
+  const markerMat = new THREE.MeshBasicMaterial({ color:0xffffff });
+  stormMarker = new THREE.Mesh(markerGeo, markerMat);
+  globe.add(stormMarker);
+
+  const glowGeo = new THREE.SphereGeometry(0.052, 16, 16);
+  const glowMat = new THREE.MeshBasicMaterial({ color:0x37e6c4, transparent:true, opacity:0.35 });
+  stormGlow = new THREE.Mesh(glowGeo, glowMat);
+  globe.add(stormGlow);
+
+  // decorative wind spiral around the marker (stylized, not measured wind)
+  windGeo = new THREE.BufferGeometry();
+  const positions = new Float32Array(WIND_N*3);
+  windBase = [];
+  for(let i=0;i<WIND_N;i++){
+    const ang = Math.random()*Math.PI*2;
+    const rad = 0.07 + Math.random()*0.22;
+    windBase.push({ang, rad, speed:0.4+Math.random()*0.8, tilt:(Math.random()-0.5)*0.15});
+    positions[i*3]=0; positions[i*3+1]=0; positions[i*3+2]=0;
+  }
+  windGeo.setAttribute('position', new THREE.BufferAttribute(positions,3));
+  const windMat = new THREE.PointsMaterial({ color:0x9fe8dc, size:0.02, transparent:true, opacity:0.75 });
+  windParticles = new THREE.Points(windGeo, windMat);
+  globe.add(windParticles);
+
+  document.getElementById('wind-note').style.display = 'block';
+}
+
+function frameLatLon(frames, idx){
+  const a = frames[Math.max(0, Math.min(idx, frames.length-1))];
+  const b = frames[Math.max(0, Math.min(idx+1, frames.length-1))];
+  return {a,b};
+}
+
+function updateMarkerPosition(frac){
+  if(!track) return;
+  const frames = track.frames;
+  const i0 = Math.floor(frac);
+  const t = frac - i0;
+  const {a,b} = frameLatLon(frames, i0);
+  const lat = a.lat + (b.lat-a.lat)*t;
+  const lon = a.lon + (b.lon-a.lon)*t;
+  const p = latLonToVec3(lat, lon, GLOBE_R*1.02);
+  if(stormMarker){ stormMarker.position.copy(p); }
+  if(stormGlow){ stormGlow.position.copy(p);
+    const cat = t < 0.5 ? a.category : b.category;
+    stormGlow.material.color.setHex(colorForCat(cat));
+    stormMarker.material.color.setHex(colorForCat(cat));
+  }
+  // orient wind spiral tangent to the surface at this point (build local basis)
+  if(windParticles && p){
+    const normal = p.clone().normalize();
+    const up = Math.abs(normal.y) < 0.99 ? new THREE.Vector3(0,1,0) : new THREE.Vector3(1,0,0);
+    const tangentA = new THREE.Vector3().crossVectors(up, normal).normalize();
+    const tangentB = new THREE.Vector3().crossVectors(normal, tangentA).normalize();
+    windParticles.userData = { center:p, normal, tangentA, tangentB, hemisphere: lat>=0 ? 1 : -1 };
+  }
+}
+
+function animateWind(dt){
+  if(!windParticles || !windGeo || !windParticles.userData.center) return;
+  const { center, normal, tangentA, tangentB, hemisphere } = windParticles.userData;
+  const posAttr = windGeo.attributes.position;
+  for(let i=0;i<WIND_N;i++){
+    const w = windBase[i];
+    w.ang += dt * w.speed * hemisphere * -1; // N hemisphere: counter-clockwise
+    const x = Math.cos(w.ang)*w.rad;
+    const y = Math.sin(w.ang)*w.rad;
+    const pt = center.clone()
+      .add(tangentA.clone().multiplyScalar(x))
+      .add(tangentB.clone().multiplyScalar(y))
+      .add(normal.clone().multiplyScalar(0.006 + w.tilt*0.02));
+    posAttr.setXYZ(i, pt.x, pt.y, pt.z);
+  }
+  posAttr.needsUpdate = true;
+}
+
+/* -------- live storm markers (screen-space labels) -------- */
+let liveMarkerGroup = new THREE.Group();
+globe.add(liveMarkerGroup);
+let liveLabelEls = [];
+
+function rebuildLiveMarkers(){
+  liveMarkerGroup.clear();
+  liveLabelEls.forEach(el=>el.remove());
+  liveLabelEls = [];
+  liveStorms.forEach(s=>{
+    if(s.lat==null || s.lon==null) return;
+    const p = latLonToVec3(s.lat, s.lon, GLOBE_R*1.025);
+    const g = new THREE.SphereGeometry(0.03, 12, 12);
+    const m = new THREE.MeshBasicMaterial({ color:0xff4d5e });
+    const mesh = new THREE.Mesh(g,m);
+    mesh.position.copy(p);
+    mesh.userData.storm = s;
+    liveMarkerGroup.add(mesh);
+
+    const el = document.createElement('div');
+    el.className = 'globe-label';
+    el.innerHTML = '<div class="ring"></div><div>'+(s.name||s.storm_id||'STORM')+'</div>';
+    document.body.appendChild(el);
+    liveLabelEls.push(el);
+    mesh.userData.labelEl = el;
+  });
+}
+
+function updateLiveLabels(){
+  liveMarkerGroup.children.forEach(mesh=>{
+    const el = mesh.userData.labelEl;
+    if(!el) return;
+    const v = mesh.getWorldPosition(new THREE.Vector3()).project(camera);
+    const behind = v.z > 1;
+    const x = (v.x*0.5+0.5)*window.innerWidth;
+    const y = (-v.y*0.5+0.5)*window.innerHeight;
+    el.style.display = behind ? 'none' : 'flex';
+    el.style.left = x+'px';
+    el.style.top = y+'px';
+  });
+}
+
+/* ============================================================
+   MANUAL ORBIT CONTROLS (drag to rotate, wheel to zoom)
+   ============================================================ */
+let dragging = false, lastX=0, lastY=0, idleTimer=null, autoRotate=true;
+let rotVel = {x:0,y:0};
+renderer.domElement.addEventListener('pointerdown', e=>{
+  dragging = true; lastX=e.clientX; lastY=e.clientY;
+  renderer.domElement.setPointerCapture(e.pointerId);
+});
+renderer.domElement.addEventListener('pointermove', e=>{
+  if(!dragging) return;
+  const dx = e.clientX-lastX, dy = e.clientY-lastY;
+  lastX=e.clientX; lastY=e.clientY;
+  globe.rotation.y += dx*0.005;
+  globe.rotation.x += dy*0.005;
+  globe.rotation.x = Math.max(-1.1, Math.min(1.1, globe.rotation.x));
+  rotVel = {x:dy*0.0003, y:dx*0.0003};
+});
+window.addEventListener('pointerup', ()=>{ dragging=false; });
+renderer.domElement.addEventListener('wheel', e=>{
+  e.preventDefault();
+  camera.position.z = Math.max(3.2, Math.min(14, camera.position.z + e.deltaY*0.0035));
+}, { passive:false });
+
+document.getElementById('rotate-toggle').addEventListener('click', function(){
+  autoRotate = !autoRotate;
+  this.textContent = 'AUTO-ROTATE: ' + (autoRotate ? 'ON' : 'OFF');
+  this.classList.toggle('active', autoRotate);
+});
+document.getElementById('rotate-toggle').classList.add('active');
+
+function flyToLatLon(lat, lon){
+  const targetTheta = -( (lon+180) * Math.PI/180 );
+  // rotate so the point faces the camera (+z)
+  const targetY = -(lon) * Math.PI/180 - Math.PI/2;
+  const targetX = (lat) * Math.PI/180 * 0.6;
+  flyTarget = { y: targetY, x: targetX, t: 0 };
+}
+let flyTarget = null;
+
+/* ============================================================
+   RENDER LOOP
+   ============================================================ */
+let last = performance.now();
+function animate(now){
+  requestAnimationFrame(animate);
+  const dt = Math.min(0.05, (now-last)/1000);
+  last = now;
+
+  if(!dragging){
+    if(flyTarget){
+      flyTarget.t += dt*1.2;
+      const k = Math.min(1, flyTarget.t);
+      globe.rotation.y += (flyTarget.y - globe.rotation.y) * 0.06;
+      globe.rotation.x += (flyTarget.x - globe.rotation.x) * 0.06;
+      if(k>=1) flyTarget=null;
+    } else if(autoRotate){
+      globe.rotation.y += dt*0.045;
+    } else if(Math.abs(rotVel.x)+Math.abs(rotVel.y) > 0.00001){
+      globe.rotation.y += rotVel.y;
+      globe.rotation.x += rotVel.x;
+      rotVel.x *= 0.94; rotVel.y *= 0.94;
+    }
+  }
+
+  cloudMesh.rotation.y += dt*0.01;
+  animateWind(dt);
+  updateLiveLabels();
+
+  // playback advance
+  if(playing && track && track.frames.length > 1){
+    playAccum += dt * speed * 0.35;
+    if(playAccum >= 1){
+      playAccum = 0;
+      frameIndex = (frameIndex + 1) % (track.frames.length - 1 >= 1 ? track.frames.length - 1 : 1);
+      document.getElementById('tl-range').value = frameIndex;
+      onFrameChange(false);
+    }
+    updateMarkerPosition(frameIndex + playAccum);
+  }
+
+  renderer.render(scene, camera);
+}
+requestAnimationFrame(animate);
+
+window.addEventListener('resize', ()=>{
+  camera.aspect = window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+/* ============================================================
+   API LAYER
+   ============================================================ */
+async function apiGet(path){
+  const res = await fetch(API_BASE + path);
+  if(!res.ok){
+    let msg = res.status;
+    try{ const j = await res.json(); msg = j.message || msg; }catch(e){}
+    throw new Error(msg);
+  }
+  return res.json();
+}
+
+async function checkHealth(){
+  const dot = document.getElementById('conn-dot');
+  const txt = document.getElementById('conn-text');
+  try{
+    const h = await apiGet('/api/health');
+    connected = true;
+    dot.className = 'dot ok';
+    txt.textContent = 'connected · model ' + (h.model_loaded ? 'loaded' : 'missing');
+    log('connected to '+API_BASE);
+    loadStormIndex();
+  }catch(e){
+    connected = false;
+    dot.className = 'dot bad';
+    txt.textContent = 'offline';
+    log('connection failed: '+e.message, true);
+  }
+}
+
+async function loadStormIndex(){
+  try{
+    const idx = await apiGet('/api/storms');
+    storms = idx.storms || [];
+    renderStormList();
+    log('loaded '+storms.length+' demo storms');
+  }catch(e){ log('failed to load storm index: '+e.message, true); }
+}
+
+function renderStormList(){
+  const el = document.getElementById('storm-list');
+  el.innerHTML = '';
+  if(storms.length === 0){ el.innerHTML = '<div class="empty-hint">No demo storms returned.</div>'; return; }
+  storms.forEach(s=>{
+    const div = document.createElement('div');
+    div.className = 'storm-item' + (selectedStorm && selectedStorm.storm_id===s.storm_id ? ' sel' : '');
+    const catStr = s.max_category >= 6 ? 'Cat5' : (s.max_category>=2 ? 'Cat'+(s.max_category-1) : (s.max_category===1?'TS':'TD'));
+    div.innerHTML = '<div><div class="name">'+s.name+'</div><div class="yr">'+s.basin+' · '+s.year+'</div></div>'+
+      '<span class="chip" style="background:var('+ (catColorCss[catStr]||'--cat-td') +')">'+catStr.replace('Cat','C')+'</span>';
+    div.addEventListener('click', ()=>selectStorm(s));
+    el.appendChild(div);
+  });
+}
+
+async function selectStorm(s){
+  selectedStorm = s;
+  renderStormList();
+  document.getElementById('tl-name').textContent = s.name + ' ('+s.year+')';
+  try{
+    track = await apiGet('/api/storms/'+s.storm_id+'/track');
+    predictionCache.clear();
+    frameIndex = 0; playAccum = 0;
+    buildTrack(track.frames);
+    updateMarkerPosition(0);
+    const range = document.getElementById('tl-range');
+    range.min = 0; range.max = track.frames.length-2 >= 0 ? track.frames.length-2 : 0;
+    range.value = 0; range.disabled = false;
+    document.getElementById('telemetry-block').style.display = 'block';
+    onFrameChange(true);
+    const first = track.frames[0];
+    flyToLatLon(first.lat, first.lon);
+    log('loaded track for '+s.name+' ('+track.frames.length+' frames)');
+  }catch(e){ log('failed to load track: '+e.message, true); }
+}
+
+function fmtTs(ts){
+  if(!ts) return '—';
+  return ts.replace('T',' ').replace(':00Z','Z').slice(0,16);
+}
+
+async function onFrameChange(forceFetch){
+  if(!track) return;
+  const f = track.frames[frameIndex];
+  document.getElementById('tl-ts').textContent = fmtTs(f.timestamp);
+  document.getElementById('t-time').textContent = fmtTs(f.timestamp);
+  document.getElementById('t-pos').textContent = f.lat.toFixed(1)+', '+f.lon.toFixed(1);
+  document.getElementById('t-wind').textContent = f.wind_kt+' kt';
+  document.getElementById('t-pres').textContent = f.pressure_mb+' mb';
+  document.getElementById('t-cat').textContent = f.category;
+
+  const imgEl = document.getElementById('img-frame');
+  const gcEl = document.getElementById('img-gradcam');
+  if(selectedStorm){
+    imgEl.src = API_BASE + '/api/storms/'+selectedStorm.storm_id+'/frame/'+frameIndex+'/image';
+    imgEl.style.display = 'block';
+    gcEl.src = API_BASE + '/api/storms/'+selectedStorm.storm_id+'/frame/'+frameIndex+'/gradcam';
+    gcEl.style.display = 'block';
+  }
+
+  await loadPrediction(frameIndex);
+}
+
+async function loadPrediction(idx){
+  const predEmpty = document.getElementById('pred-empty');
+  const predBlock = document.getElementById('pred-block');
+  if(predictionCache.has(idx)){
+    const p = predictionCache.get(idx);
+    if(p === 'none'){ predEmpty.style.display='block'; predBlock.style.display='none'; }
+    else{ predEmpty.style.display='none'; predBlock.style.display='block'; fillPrediction(p); }
+    return;
+  }
+  try{
+    const p = await apiGet('/api/storms/'+selectedStorm.storm_id+'/frame/'+idx+'/predict');
+    predictionCache.set(idx, p);
+    predEmpty.style.display='none'; predBlock.style.display='block';
+    fillPrediction(p);
+  }catch(e){
+    predictionCache.set(idx, 'none');
+    predEmpty.style.display='block'; predBlock.style.display='none';
+  }
+}
+
+function fillPrediction(p){
+  document.getElementById('p-cat').textContent = p.predicted_category;
+  document.getElementById('p-conf').textContent = (p.confidence*100).toFixed(1)+'%';
+  document.getElementById('p-6w').textContent = p.trend.plus_6h.wind_kt.toFixed(0)+'kt';
+  document.getElementById('p-6p').textContent = p.trend.plus_6h.pressure_mb.toFixed(0)+'mb';
+  document.getElementById('p-12w').textContent = p.trend.plus_12h.wind_kt.toFixed(0)+'kt';
+  document.getElementById('p-12p').textContent = p.trend.plus_12h.pressure_mb.toFixed(0)+'mb';
+  document.getElementById('p-24w').textContent = p.trend.plus_24h.wind_kt.toFixed(0)+'kt';
+  document.getElementById('p-24p').textContent = p.trend.plus_24h.pressure_mb.toFixed(0)+'mb';
+  document.getElementById('ri-flag').classList.toggle('show', !!p.rapid_intensification_flag);
+}
+
+async function refreshLiveStorms(){
+  const el = document.getElementById('live-list');
+  el.innerHTML = '<div class="empty-hint">Querying NHC…</div>';
+  try{
+    const r = await apiGet('/api/live/storms');
+    liveStorms = r.storms || [];
+    rebuildLiveMarkers();
+    if(liveStorms.length===0){
+      el.innerHTML = '<div class="empty-hint">No active storms right now (normal outside hurricane season).</div>';
+    } else {
+      el.innerHTML = '';
+      liveStorms.forEach(s=>{
+        const div = document.createElement('div');
+        div.className = 'live-item';
+        div.innerHTML = '<div class="name">● '+(s.name||s.storm_id)+'</div>'+
+          '<div class="meta"><span>'+(s.classification||'—')+'</span><span>'+(s.intensity_kt!=null?s.intensity_kt+'kt':'—')+'</span><span>'+(s.pressure_mb!=null?s.pressure_mb+'mb':'—')+'</span></div>';
+        div.addEventListener('click', ()=>{ if(s.lat!=null) flyToLatLon(s.lat, s.lon); });
+        el.appendChild(div);
+      });
+    }
+    log('live NHC feed: '+liveStorms.length+' active storm(s)');
+  }catch(e){
+    el.innerHTML = '<div class="empty-hint">Live feed unavailable: '+e.message+'</div>';
+    log('live feed error: '+e.message, true);
+  }
+}
+
+/* ============================================================
+   UI WIRING
+   ============================================================ */
+document.getElementById('connect-btn').addEventListener('click', ()=>{
+  API_BASE = document.getElementById('api-base-input').value.replace(/\/$/, '');
+  checkHealth();
+});
+document.getElementById('api-base-input').addEventListener('keydown', e=>{
+  if(e.key==='Enter'){ document.getElementById('connect-btn').click(); }
+});
+
+document.querySelectorAll('.tab').forEach(tab=>{
+  tab.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('tab-hist').style.display = tab.dataset.tab==='hist' ? 'block':'none';
+    document.getElementById('tab-live').style.display = tab.dataset.tab==='live' ? 'block':'none';
+  });
+});
+document.getElementById('refresh-live-btn').addEventListener('click', refreshLiveStorms);
+setInterval(()=>{ if(connected && document.getElementById('tab-live').style.display!=='none') refreshLiveStorms(); }, 60000);
+
+document.getElementById('play-btn').addEventListener('click', function(){
+  playing = !playing;
+  this.textContent = playing ? '⏸' : '▶';
+});
+document.getElementById('tl-range').addEventListener('input', e=>{
+  frameIndex = parseInt(e.target.value,10);
+  playAccum = 0;
+  onFrameChange(true);
+  updateMarkerPosition(frameIndex);
+});
+document.querySelectorAll('.speed-group .btn').forEach(b=>{
+  b.addEventListener('click', function(){
+    document.querySelectorAll('.speed-group .btn').forEach(x=>x.classList.remove('active'));
+    this.classList.add('active');
+    speed = parseFloat(this.dataset.speed);
+  });
+});
+
+/* satellite modal */
+const satModal = document.getElementById('sat-modal');
+document.getElementById('open-sat-btn').addEventListener('click', ()=>{ satModal.classList.add('show'); });
+document.getElementById('sat-close-btn').addEventListener('click', ()=>{ satModal.classList.remove('show'); });
+document.getElementById('sat-load-btn').addEventListener('click', async ()=>{
+  const sat = document.getElementById('sat-sat').value;
+  const region = document.getElementById('sat-region').value;
+  const wrap2 = document.getElementById('sat-img-wrap');
+  const status = document.getElementById('sat-status');
+  status.textContent = 'loading…';
+  try{
+    const url = API_BASE + '/api/live/satellite-image?satellite='+sat+'&region='+region;
+    const res = await fetch(url);
+    if(!res.ok){ throw new Error('HTTP '+res.status); }
+    const blob = await res.blob();
+    wrap2.innerHTML = '<img src="'+URL.createObjectURL(blob)+'">';
+    status.textContent = 'loaded · '+sat+' / '+region+' · source: NOAA/NESDIS/STAR GOES CDN';
+    log('satellite image loaded ('+sat+'/'+region+')');
+  }catch(e){
+    status.textContent = 'failed: '+e.message;
+    log('satellite image failed: '+e.message, true);
+  }
+});
+
+/* ============================================================
+   INIT
+   ============================================================ */
+log('console initialized');
+checkHealth();
+
+})();
+</script>
+</body>
+</html>

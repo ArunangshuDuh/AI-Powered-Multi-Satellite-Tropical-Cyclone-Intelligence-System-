@@ -1,0 +1,32 @@
+{
+  "storms": [
+    {
+      "storm_id": "AL182012",
+      "name": "SANDY",
+      "basin": "ATL",
+      "year": 2012,
+      "max_category": 4
+    },
+    {
+      "storm_id": "AL122005",
+      "name": "KATRINA",
+      "basin": "ATL",
+      "year": 2005,
+      "max_category": 6
+    },
+    {
+      "storm_id": "AL252005",
+      "name": "WILMA",
+      "basin": "ATL",
+      "year": 2005,
+      "max_category": 6
+    },
+    {
+      "storm_id": "AL041992",
+      "name": "ANDREW",
+      "basin": "ATL",
+      "year": 1992,
+      "max_category": 6
+    }
+  ]
+}
